@@ -1,3 +1,4 @@
+//Skriven av Daniel
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,16 @@ public class Net : MonoBehaviour
     public Transform netPos;
     public float netRangeX;
     public float netRangeY;
-    public int netCapture;
+    //public int netCapture;
     public LayerMask trashCheck;
     PlayerMovement movement;
+    Trash trashPrice;
     Vector3 netDirection;
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
+        trashPrice = GetComponent<Trash>();
     }
 
     void LateUpdate()

@@ -1,16 +1,19 @@
+//Skriven av Daniel
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int trashCollected;
-    public int TrashBags;
+    public int trashCollected; //Variabel till mängden skräp man plockat. - Daniel
+    public int TrashBags; //Variabel till mängden soppåsar man plockat. - Daniel
+    public int Money; //Variabel till mängden pengar man har. - Daniel
+    public int moneyCollected; //Variabel till mängden pengar man tjänat men inte tagit ut. - Daniel
+
     // Start is called before the first frame update
     void Start()
     {
-        trashCollected = 0; //Variabel till mängden skräp man plockat. - Daniel
-        TrashBags = 0; //Variabel till mängden soppåsar man plockat. - Daniel
+
     }
 
     // Update is called once per frame
