@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Net : MonoBehaviour
 {
-    
     public KeyCode netBag;
     public float cooldownTime;
     public float startCooldownTime;
@@ -15,13 +14,15 @@ public class Net : MonoBehaviour
     //public int netCapture;
     public LayerMask trashCheck;
     PlayerMovement movement;
-    Trash trashPrice;
+    Trash trash;
+    Score score;
     Vector3 netDirection;
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        trashPrice = GetComponent<Trash>();
+        trash = FindObjectOfType<Trash>();
+        score = GetComponent<Score>();
     }
 
     void LateUpdate()
@@ -40,8 +41,10 @@ public class Net : MonoBehaviour
                 {
                     trashInRange[i].GetComponent<Trash>().trashPickUp =- 1; //Gör att trash plockas upp. - Daniel
                     //screenShake.shakeTime = 0.1f;
-                    GetComponent<Score>().trashCollected += 1;
-                    print(GetComponent<Score>().trashCollected);
+                    score.trashCollected += 1; //Ökar mängden skräp man plockat. - Daniel
+                    score.moneyCollected += trash.trashWorth; //Ökar hur mycket pengar man tjänat ihop som man kan ta ut vid shoppen. - Daniel
+                    print("Trash: " + score.trashCollected);
+                    print("Worth: " + score.moneyCollected);
                     //print("Recieved");
                     cooldownTime = startCooldownTime; //Sätter nätet på cooldown. - Daniel
 
