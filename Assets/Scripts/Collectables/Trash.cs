@@ -10,7 +10,7 @@ public class Trash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        print(trashWorth);
     }
 
     // Update is called once per frame
