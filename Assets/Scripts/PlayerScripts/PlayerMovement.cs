@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed = 4.5f;
     public Rigidbody2D rb;
+    OpenShop shop;
     
     [HideInInspector]
     public Vector2 Movement;
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
+        shop = FindObjectOfType<OpenShop>();
     }
 
     void Update()

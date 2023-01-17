@@ -41,10 +41,11 @@ public class Net : MonoBehaviour
                     Collider2D[] trashInRange = Physics2D.OverlapBoxAll(netPos.position + netDirection * 2, new Vector2(netRangeX, netRangeY), trashCheck); //Själva hitboxen för nätet. netPos bestämmer att hitboxen hamnar på gameObjectet netPos position, netDirection gör att den hamnar framför spelaren åt riktningen spelaren senast gick i, netRange bestämmer storleken av hitboxen och trashCheck kollar på objectets layer, om det har "Trash" plockar den up objektet. - Daniel
                     for (int i = 0; i < trashInRange.Length; i++) //Kollar hur mycket trash som är i hitboxen. - Daniel
                     {
-                        trashInRange[i].GetComponent<Trash>().trashPickUp = -1; //Gör att trash plockas upp. - Daniel
-                                                                                //screenShake.shakeTime = 0.1f;
+                        Trash current = trashInRange[i].GetComponent<Trash>(); //Specifierar vilket skräp som plockas upp och därmed vilka värden koden arbetar med. - Daniel
+                        current.trashPickUp = -1; //Gör att trash plockas upp. - Daniel
+                        //screenShake.shakeTime = 0.1f;
                         score.trashCollected += 1; //Ökar mängden skräp man plockat. - Daniel
-                        score.moneyCollected += trash.trashWorth; //Ökar hur mycket pengar man tjänat ihop som man kan ta ut vid shoppen. - Daniel
+                        score.moneyCollected += current.trashWorth; //Ökar hur mycket pengar man tjänat ihop som man kan ta ut vid shoppen. - Daniel
                         print("Trash: " + score.trashCollected);
                         print("Worth: " + score.moneyCollected);
                         //print("Recieved");
