@@ -9,7 +9,7 @@ public class ShopManagerScript : MonoBehaviour
 
     public int[,] shopItems = new int[5,5];
     public float money;
-    public Text MoneyTxt; 
+    public Text MoneyTxt;
 
     void Start()
     {
@@ -44,10 +44,5 @@ public class ShopManagerScript : MonoBehaviour
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
 
         }
-    }
-
-    void Update()
-    {
-        
     }
 }
