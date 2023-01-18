@@ -38,7 +38,7 @@ public class Net : MonoBehaviour
                 if (Input.GetKeyDown(netBag))
                 {
                     cooldownTime = startCooldownTime; //Sätter nätet på cooldown. - Daniel
-                    Collider2D[] trashInRange = Physics2D.OverlapBoxAll(netPos.position + netDirection * 2, new Vector2(netRangeX, netRangeY), trashCheck); //Själva hitboxen för nätet. netPos bestämmer att hitboxen hamnar på gameObjectet netPos position, netDirection gör att den hamnar framför spelaren åt riktningen spelaren senast gick i, netRange bestämmer storleken av hitboxen och trashCheck kollar på objectets layer, om det har "Trash" plockar den up objektet. - Daniel
+                    Collider2D[] trashInRange = Physics2D.OverlapBoxAll(netPos.position + netDirection * 2, new Vector2(netRangeX, netRangeY),0, trashCheck); //Själva hitboxen för nätet. netPos bestämmer att hitboxen hamnar på gameObjectet netPos position, netDirection gör att den hamnar framför spelaren åt riktningen spelaren senast gick i, netRange bestämmer storleken av hitboxen och trashCheck kollar på objectets layer, om det har "Trash" plockar den up objektet. - Daniel
                     for (int i = 0; i < trashInRange.Length; i++) //Kollar hur mycket trash som är i hitboxen. - Daniel
                     {
                         Trash current = trashInRange[i].GetComponent<Trash>(); //Specifierar vilket skräp som plockas upp och därmed vilka värden koden arbetar med. - Daniel
