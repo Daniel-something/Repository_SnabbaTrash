@@ -13,18 +13,16 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 Movement;
     public Vector2 lastMovement;
 
-
-
     private void Start()
     {
         shop = FindObjectOfType<OpenShop>();
     }
 
     void Update()
-    {
+    {   
             Movement.x = Input.GetAxisRaw("Horizontal"); //Gör att "Horizontal" knapparna får spelaren att gå i x-axeln. - Daniel
-            Movement.y = Input.GetAxisRaw("Vertical"); //Gör att "Vertical" knapparna får spelaren att gå i y-axeln. - Daniel        
-  
+            Movement.y = Input.GetAxisRaw("Vertical"); //Gör att "Vertical" knapparna får spelaren att gå i y-axeln. - Daniel
+        
         if (Movement.magnitude > 0)
         {
             lastMovement = Movement;
