@@ -12,6 +12,7 @@ public class ShopManagerScript : MonoBehaviour
     //public float money;
     public Text MoneyTxt;
     Score score;
+    ButtonInfo button;
     public int item1Price;
     public int item2Price;
     public int item3Price;
@@ -21,6 +22,7 @@ public class ShopManagerScript : MonoBehaviour
     void Start()
     {
         score = FindObjectOfType<Score>();
+        button = FindObjectOfType<ButtonInfo>();
 
         MoneyTxt.text = "Money: " + score.Money;//.ToString();
 
@@ -51,7 +53,8 @@ public class ShopManagerScript : MonoBehaviour
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
             MoneyTxt.text = "Money" + score.Money.ToString();
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
-
+            print(item1Amount);
+            print(item2Amount);
         }
     }
     private void Update()
