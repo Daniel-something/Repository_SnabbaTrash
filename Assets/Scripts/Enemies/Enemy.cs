@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         spawning = true;
     }
 
-    IEnumerator CreateBonde() //Kallar på SpawnBonde funktionen varje 1,5 sekunder -William
+    IEnumerator CreateBonde() //Kallar på SpawnBonde funktionen varje 8.5 sekunder
     {
         while (true)
         { 
@@ -33,12 +33,13 @@ public class Enemy : MonoBehaviour
 
     void SpawnCube()
     {
-        Instantiate(new GameObject(), transform.position + new Vector3(Random.Range(-500, 500), Random.Range(-500,500),0), Quaternion.identity);
+        //byt till inunitysphere spawn -JR
+        //Instantiate(new GameObject(), transform.position + new Vector3(Random.Range(10, 10), Random.Range(-10,10),0), Quaternion.identity);
     }
 
     void SpawnBonde() 
     {
-        Instantiate(Skräp,transform.position + new Vector3(Random.Range(-500, 500), Random.Range(-500, 500), 0), Quaternion.identity);
+        Instantiate(Skräp,transform.position + new Vector3(Random.Range(-11, 11), Random.Range(-11, 11), 0), Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
