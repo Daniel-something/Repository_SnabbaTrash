@@ -7,7 +7,7 @@ public class AI : MonoBehaviour
 {
     public Transform[] waypoints; //lista för waypoints
     public int currentWaypointIndex = 0;
-    private float speed = 2f;
+    public float speed;
 
     private float waitTime = 1f; //sekunder
 
