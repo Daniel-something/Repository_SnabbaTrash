@@ -8,11 +8,13 @@ using UnityEngine.UI;
 public class ShopManagerScript : MonoBehaviour
 {
 
-    public int[,] shopItems = new int[5,5];
+    public int[,] shopItems = new int[6,6];
     //public float money;
     public Text MoneyTxt;
     Score score;
     ButtonInfo button;
+    PlayerMovement movement;
+    Upgrades upgrades;
     public int item1Price;
     public int item2Price;
     public int item3Price;
@@ -23,6 +25,8 @@ public class ShopManagerScript : MonoBehaviour
     {
         score = FindObjectOfType<Score>();
         button = FindObjectOfType<ButtonInfo>();
+        movement = FindObjectOfType<PlayerMovement>();
+        upgrades = FindObjectOfType<Upgrades>();
 
         MoneyTxt.text = "Money: " + score.Money;//.ToString();
 
@@ -41,6 +45,16 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[3, 2] = item2Amount;
         shopItems[3, 3] = item3Amount;
 
+        //Upgrade type
+        shopItems[4, 1] = movement.walkSpeed;
+        shopItems[4, 2] = score.trashMax;
+        shopItems[4, 3] = 3;
+
+        //Upgrade amount
+        shopItems[5, 1] = upgrades.movementUpgrade;
+        shopItems[5, 2] = upgrades.inventoryUpgrade;
+        shopItems[5, 3] = 3;
+
     }
 
     //Kod för att köpa objekt
@@ -48,12 +62,13 @@ public class ShopManagerScript : MonoBehaviour
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]) //Du kan köpa om du har råd
+        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]) //Du kan köpa om du har råd - Sebastian
         {
-            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]; //tar bort pengar
+            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]; //tar bort pengar - Sebastian
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
+            shopItems[4, ButtonRef.GetComponent<ButtonInfo>().ItemID] += shopItems[5, ButtonRef.GetComponent<ButtonInfo>().ItemID]; //Ökar variabeln som bestämmer spelarens abilities som walkSpeed och trashMax med värdet av Score scriptets motsvarande variabel som bestämmer hur mycket de ska uppgraderas. - Daniel
             MoneyTxt.text = "Money" + score.Money.ToString();
-            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString(); //Updaterar string
+            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString(); //Updaterar string - Sebastian
             print(item1Amount);
             print(item2Amount);
         }
@@ -61,6 +76,8 @@ public class ShopManagerScript : MonoBehaviour
     private void Update()
     {
         MoneyTxt.text = "Money: " + score.Money;
+        movement.walkSpeed = shopItems[4, 1]; //Kollar att walkSpeed alltid är desamma som shopItems[4, 1], vilket är variabeln som först får uppgraderingarna. - Daniel
+        score.trashMax = shopItems[4, 2];//Kollar att trashMax alltid är desamma som shopItems[4, 2], vilket är variabeln som först får uppgraderingarna. - Daniel
         //money = score.Money;
     }
 }

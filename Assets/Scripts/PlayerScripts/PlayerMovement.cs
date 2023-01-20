@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed;
+    public int walkSpeed;
     public Rigidbody2D rb;
     OpenShop shop;
 
