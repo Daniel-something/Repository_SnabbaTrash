@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bil : MonoBehaviour
 {
     Health health;
-    // Start is called before the first frame update
+
     void Start()
     {
         FindObjectOfType<Health>();
@@ -15,14 +15,8 @@ public class Bil : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            health.currentHealth -= collision.gameObject.GetComponent<Health>().;
+            health.currentHealth -= collision.gameObject.GetComponent<Health>().health;
             health.currentHealth -= 1;
         }
-    }
-   
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

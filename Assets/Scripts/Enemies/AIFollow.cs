@@ -34,6 +34,7 @@ public class AIFollow : MonoBehaviour
         if (collision.transform.tag == "Enemy")
         {
             health.health -= 1;
+
         }
     }
 }
