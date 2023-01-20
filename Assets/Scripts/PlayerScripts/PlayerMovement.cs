@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 4.5f;
+    public float walkSpeed;
     public Rigidbody2D rb;
     OpenShop shop;
-    
+
     [HideInInspector]
     public Vector2 Movement;
     public Vector2 lastMovement;

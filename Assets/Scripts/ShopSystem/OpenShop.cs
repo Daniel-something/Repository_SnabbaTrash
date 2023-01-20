@@ -13,6 +13,8 @@ public class OpenShop : MonoBehaviour
     {
         score = FindObjectOfType<Score>();
     }
+
+    //Öppnar UIn om kollision
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -33,6 +35,7 @@ public class OpenShop : MonoBehaviour
         }
     }
     
+    //Tar bort UIn om ESC
     void Update()
     {
         if (ShopMenuOpen = true && Input.GetKeyDown(KeyCode.Escape))

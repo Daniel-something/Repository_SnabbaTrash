@@ -12,6 +12,7 @@ public class ShopManagerScript : MonoBehaviour
     //public float money;
     public Text MoneyTxt;
     Score score;
+    ButtonInfo button;
     public int item1Price;
     public int item2Price;
     public int item3Price;
@@ -21,6 +22,7 @@ public class ShopManagerScript : MonoBehaviour
     void Start()
     {
         score = FindObjectOfType<Score>();
+        button = FindObjectOfType<ButtonInfo>();
 
         MoneyTxt.text = "Money: " + score.Money;//.ToString();
 
@@ -41,17 +43,19 @@ public class ShopManagerScript : MonoBehaviour
 
     }
 
+    //Kod för att köpa objekt
     public void Buy()
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
+        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]) //Du kan köpa om du har råd
         {
-            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
+            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]; //tar bort pengar
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
             MoneyTxt.text = "Money" + score.Money.ToString();
-            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
-
+            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString(); //Updaterar string
+            print(item1Amount);
+            print(item2Amount);
         }
     }
     private void Update()
