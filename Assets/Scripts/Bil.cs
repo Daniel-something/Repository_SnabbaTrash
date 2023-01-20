@@ -15,10 +15,10 @@ public class Bil : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            health.health -= 1;
+            health.currentHealth -= collision.gameObject.GetComponent<Health>().;
+            health.currentHealth -= 1;
         }
     }
-
    
     // Update is called once per frame
     void Update()

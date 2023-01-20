@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public bool spawning;
     public GameObject Skott;
     public Transform firePoint;
+    public Health health;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,9 @@ public class Enemy : MonoBehaviour
     IEnumerator CreateBonde() //Kallar på SpawnBonde funktionen varje 1,5 sekunder -William
     {
         while (true)
-        {
+        { 
             SpawnBonde();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(8.5f);
         }
     }
 
@@ -30,15 +31,21 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void SpawnBonde() //Skapar en bonde slumpmässigt emellan de fyra väggarna -William
+    void SpawnCube()
     {
-        Instantiate(Skräp);
+        Instantiate(new GameObject(), transform.position + new Vector3(Random.Range(-500, 500), Random.Range(-500,500),0), Quaternion.identity);
+    }
+
+    void SpawnBonde() 
+    {
+        Instantiate(Skräp,transform.position + new Vector3(Random.Range(-500, 500), Random.Range(-500, 500), 0), Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            
             Destroy(collision.gameObject);
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trash
   - Event
+  - Enemy
   layers:
   - Default
   - TransparentFX
