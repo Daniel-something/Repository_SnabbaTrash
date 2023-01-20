@@ -43,16 +43,17 @@ public class ShopManagerScript : MonoBehaviour
 
     }
 
+    //Kod för att köpa objekt
     public void Buy()
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
+        if(score.Money >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]) //Du kan köpa om du har råd
         {
-            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
+            score.Money -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]; //tar bort pengar
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
             MoneyTxt.text = "Money" + score.Money.ToString();
-            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString(); //Updaterar string
             print(item1Amount);
             print(item2Amount);
         }

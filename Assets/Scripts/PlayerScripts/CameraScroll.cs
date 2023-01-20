@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Av Sebastian
-
 public class CameraScroll : MonoBehaviour
 {
     public Transform player;

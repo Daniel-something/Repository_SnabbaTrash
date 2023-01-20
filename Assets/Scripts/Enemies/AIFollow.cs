@@ -10,8 +10,11 @@ public class AIFollow : MonoBehaviour
 
     private Transform target;
 
+    Health health;
+
     private void Start()
     {
+        FindObjectOfType<Health>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
@@ -29,7 +32,7 @@ public class AIFollow : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
-            //hp--;
+            health.health -= 1;
         }
     }
 }
