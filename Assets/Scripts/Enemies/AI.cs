@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Sebastian
 public class AI : MonoBehaviour
 {
     public Transform[] waypoints; //lista för waypoints
