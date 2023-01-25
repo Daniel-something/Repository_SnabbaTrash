@@ -6,12 +6,14 @@ using UnityEngine;
 public class OpenShop : MonoBehaviour
 {
     Score score;
+    Health health;
     public bool ShopMenuOpen;
     public GameObject ShopMenuUI;
 
     private void Start()
     {
         score = FindObjectOfType<Score>();
+        health = FindObjectOfType<Health>();
     }
 
     //Öppnar UIn om kollision
@@ -26,6 +28,7 @@ public class OpenShop : MonoBehaviour
             score.moneyCollected = 0;
             score.trashCollected = 0;
             ShopMenuOpen = true;
+            health.currentHealth = health.maxHealth;
             //}
         }
         else
