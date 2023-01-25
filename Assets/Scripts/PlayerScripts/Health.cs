@@ -1,3 +1,4 @@
+//Skriven av Johnathan, redigerad av Daniel
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
 	public int health;
-	public int maxHealth = 3;
+	public int currentHealth; //Jag gjorde att currentHealth variabeln exklusivt användes istället för en blandning av health och currentHealth. Tog bort även några rader kod som ställde till med problem i private void OnTriggerEnter2d. - Daniel
+	public int maxHealth;
 	public HealthBar HealthBar;
-	public int currentHealth;
 	//PlayerInvul invul;
 
 	public AudioClip PlayerDamage;
@@ -16,11 +17,16 @@ public class Health : MonoBehaviour
 	private void Start()
 	{
 		HealthBar.SetMaxHealth(maxHealth);
-		maxHealth = health;
+		maxHealth = currentHealth;
 		//invul = GetComponent<PlayerInvul>();
 	}
-	
-	void TakeDamage(int damage)
+
+    private void Update()
+    {
+		health = currentHealth;
+    }
+
+    void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
 		HealthBar.SetHealth(currentHealth);
@@ -36,17 +42,17 @@ public class Health : MonoBehaviour
 			//TakeDamage(1);
 			print("benis");
 		}
-		if (health > 0)
+		if (currentHealth > 0)
 		{
-			health -= 1;
 			//invul.gotHit = true;
-			Camera.main.GetComponent<AudioSource>().PlayOneShot(PlayerDamage);
-			Debug.Log("Health = " + health.ToString());
+			//Camera.main.GetComponent<AudioSource>().PlayOneShot(PlayerDamage);
+			Debug.Log("Health = " + currentHealth.ToString());
 			print("krembal");
 		}
-		if (health == 0)
+		if (currentHealth == 0)
 		{
 			SceneManager.LoadScene("GameOverScene");
 		}
+
 	}
 }
