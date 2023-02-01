@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     OpenShop shop;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Vector2 Movement;
     public Vector2 lastMovement;
 
